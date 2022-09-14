@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          gpg -d --passphrase "$GPG_DECRYPT_PASSPHRASE" --batch --quiet .github/files/secring.gpg.asc > android_speexdsp/secring.gpg
+          gpg -d --passphrase "$GPG_DECRYPT_PASSPHRASE" --batch --quiet .github/files/secret.gpg.asc > android_speexdsp/secring.gpg
       - name: set up JDK 1.8
         uses: actions/setup-java@v1
         with:
