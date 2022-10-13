@@ -15,7 +15,7 @@ Java_com_iot_speexdsp_interfaces_SpeexJNIBridge_init(JNIEnv *env, jclass type,
                                                          jint frame_size, jint sampling_rate) {
 
     frame_size /= 2;
-    int filterLength = frame_size * 8;
+    int filterLength = frame_size * 5;
 
     //降噪初始化
     state = speex_preprocess_state_init(frame_size, sampling_rate);
@@ -23,9 +23,9 @@ Java_com_iot_speexdsp_interfaces_SpeexJNIBridge_init(JNIEnv *env, jclass type,
     speex_preprocess_ctl(state, SPEEX_PREPROCESS_SET_DENOISE, &i); //降噪 建议1
     i = -25;
     speex_preprocess_ctl(state, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &i);////设置噪声的dB
-    i = 1;
+    i = 0;
     speex_preprocess_ctl(state, SPEEX_PREPROCESS_SET_AGC, &i);////增益
-    i = 24000;
+    i = 8000;
     speex_preprocess_ctl(state, SPEEX_PREPROCESS_SET_AGC_LEVEL, &i);
     i = 0;
     speex_preprocess_ctl(state, SPEEX_PREPROCESS_SET_DEREVERB, &i);
