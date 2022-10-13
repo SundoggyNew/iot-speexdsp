@@ -15,7 +15,7 @@ Java_com_iot_speexdsp_interfaces_SpeexJNIBridge_init(JNIEnv *env, jclass type,
                                                          jint frame_size, jint sampling_rate) {
 
     frame_size /= 2;
-    int filterLength = frame_size * 5;
+    int filterLength = 6000;
 
     //降噪初始化
     state = speex_preprocess_state_init(frame_size, sampling_rate);
